@@ -1,0 +1,23 @@
+﻿@model Review
+
+@{
+    ViewData["Title"] = "Edit Review";
+}
+
+<h2>Edit Review from @Model.User.FirstName @Model.User.LastName (@Model.User.UserName)</h2>
+
+<div>
+    <h4>Barber: @Model.Barber.Name</h4>
+    <hr />
+    <form asp-action="EditReview">
+        <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+        <input type="hidden" asp-for="Id" />
+        <div class="form-group">
+            <label>Comment:</label>
+            <textarea asp-for="Content" class="form-control"></textarea>
+            <span asp-validation-for="Content" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

@@ -1,0 +1,34 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+<h5 style="position: relative;top: 20px;left: 35%;width: fit-content;background: white;">@ViewData["Title"]</h5>
+<div class="row d-flex justify-content-center">
+    <div class="col-md-4">
+        <section>
+            <form id="account" method="post" class="border border-2 border-secondary" style="padding: 20px">
+                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                <div class="fw-bold">Username</div>
+                <div class="form-floating mb-4">
+                    <input asp-for="Input.UserName" aria-required="true"/>
+                    <span asp-validation-for="Input.UserName" class="text-danger"></span>
+                </div>
+                <div class="fw-bold">Password</div>
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Password" autocomplete="current-password" aria-required="true"/>
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div>
+                    <button id="login-submit" type="submit" class="fw-bold">Log in</button>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

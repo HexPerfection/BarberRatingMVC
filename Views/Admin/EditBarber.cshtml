@@ -1,0 +1,34 @@
+﻿@model Barber
+
+@{
+    ViewData["Title"] = "Edit Barber";
+}
+
+<h2>Edit Barber</h2>
+
+<form asp-action="EditBarber" method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <input asp-for="Description" class="form-control" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Current Profile Picture</label><br />
+        @if (!string.IsNullOrEmpty(Model.ProfilePicture))
+        {
+            <img src="@Model.ProfilePicture" alt="Profile Picture" style="max-width: 200px; max-height: 200px;" />
+            <br />
+        }
+        <br />
+        <label asp-for="ProfilePicture">Upload New Profile Picture</label>
+        <input type="file" asp-for="ProfilePicture" name="profilePicture" class="form-control" accept="image/*" />
+    </div>
+    <button type="submit" class="btn btn-primary">Update Barber</button>
+</form>

@@ -1,0 +1,26 @@
+﻿@model ItKariera.Models.Barber
+
+@{
+    ViewData["Title"] = "Add Barber";
+}
+
+<h2>Add Barber</h2>
+
+<form asp-action="AddBarber" method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <input asp-for="Description" class="form-control" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ProfilePicture"></label>
+        <input type="file" asp-for="ProfilePicture" name="profilePicture" class="form-control" accept="image/*" />
+    </div>
+    <button type="submit" class="btn btn-primary">Add Barber</button>
+</form>

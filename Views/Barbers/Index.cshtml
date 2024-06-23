@@ -1,0 +1,37 @@
+﻿@model IList<Barber>
+
+@{
+    ViewData["Title"] = "Barber List";
+}
+
+<h2>Barber List</h2>
+
+<form asp-controller="Barbers" asp-action="Index" method="get">
+    <div class="form-group">
+        <label>Search by Name:</label>
+        <input type="text" class="form-control" name="searchString" value="@ViewData["CurrentFilter"]" />
+        <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var barber in Model)
+        {
+            <tr>
+                <td>@barber.Name</td>
+                <td>@barber.Description</td>
+                <td>
+                    <a asp-controller="Reviews" asp-action="Create" asp-route-id="@barber.Id">Leave Review</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

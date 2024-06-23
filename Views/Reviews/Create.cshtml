@@ -1,0 +1,21 @@
+﻿@model Review
+
+@{
+    ViewData["Title"] = "Leave Review";
+}
+
+<h2>Leave Review for Barber @ViewData["BarberName"] </h2>
+
+<div>
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+        @Html.AntiForgeryToken()
+        <input type="hidden" asp-for="BarberId" />
+        <div class="form-group">
+            <label>Comment:</label>
+            <textarea asp-for="Content" class="form-control"></textarea>
+            <span asp-validation-for="Content" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Review</button>
+    </form>
+</div>

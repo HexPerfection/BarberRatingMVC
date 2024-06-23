@@ -1,0 +1,52 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using ItKariera.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<ul class="navbar-nav">
+@if (SignInManager.IsSignedIn(User))
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" href="/">Home</a>
+    </li>
+    <h3>|</h3>
+    <li class="nav-item">
+        <a class="nav-link text-dark" href="/Barbers" title="Manage">Barbers</a>
+    </li>
+    <h3>|</h3>
+    <li class="nav-item">
+        <a class="nav-link text-dark" href="/Reviews">Reviews</a>
+    </li>
+    <h3>|</h3>
+    <li class="nav-item">
+        <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Profile</a>
+    </li>
+    <h3>|</h3>
+    @if (User.IsInRole("Admin"))
+    {
+    <li class="nav-item">
+        <a class="nav-link" href="/Admin">Manage</a>
+    </li>
+    <h3>|</h3>         
+    }
+    <li class="nav-item">
+        <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button  type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+        </form>
+    </li>
+}
+else
+    {
+    <li class="nav-item">
+        <a class="nav-link text-dark" href="/">Home</a>
+    </li>
+    <h3>|</h3>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
+    </li>
+    <h3>|</h3>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+    </li>
+}
+</ul>
